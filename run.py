@@ -35,6 +35,10 @@ Detail_Frame.place(x=500, y=100, width=800, height=580)
 # Labels
 lbl_title = Label(Manage_Frame, text="Manage Students", bg="crimson", fg="white", font=("times new roman", 30, "bold"))
 lbl_title.grid(row=0, columnspan=2, pady=20)
+lbl_title.place(x=50, y=50)
+
+lbl_roll = Label(Manage_Frame, text="Roll No.", bg="crimson", fg="white", font=("times new roman", 20, "bold"))
+
 
 
 root.mainloop()
