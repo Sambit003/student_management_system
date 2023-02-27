@@ -86,7 +86,12 @@ def btn_add():
 
 def btn_update():
     # SQL query to update the record
-    crDB.execute()
+    try:
+        crDB.execute('update student set name = ?, age = ?, gender = ?, address = ?, phone = ? where roll_no = ?', (name.get(), age.get(), gender.get(), address.get(), phone.get(), roll_no.get()))
+        connectDB.commit()
+        messagebox.showinfo("Success", "Record has been updated")
+    except:
+        messagebox.showerror("Error", "Record not updated")
 
 def btn_delete():
     try: 
