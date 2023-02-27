@@ -4,14 +4,14 @@
 from tkinter import *
 import sqlite3
 
-# Creating instance of TK
-root = Tk()
-
 # Connecting to the database
 connectDB = sqlite3.connect('student.db')
 cusorDB = connectDB.cursor()
 cusorDB.execute('create table if not exists student_details (roll_no integer primary key, name text, age integer, gender text, address text, phone integer)')
 cusorDB.commit()
+
+# Creating instance of TK
+root = Tk()
 
 # Defining the variables
 roll_no = IntVar()
