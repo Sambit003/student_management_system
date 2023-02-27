@@ -2,6 +2,7 @@
 # Importing Modules
 from tkinter import *
 from tkinter import messagebox
+from tkinter import ttk
 import sqlite3
 
 # Connecting to the database
@@ -25,6 +26,7 @@ phone = StringVar(root)
 root.title("Student Management System")
 root.geometry("1350x700+0+0")
 
+
 # Frames
 Manage_Frame = Frame(root, bd=4, relief=RIDGE, bg="crimson")
 Manage_Frame.place(x=20, y=100, width=450, height=580)
@@ -32,6 +34,7 @@ Manage_Frame.place(x=20, y=100, width=450, height=580)
 Detail_Frame = Frame(root, bd=4, relief=RIDGE, bg="crimson")
 Detail_Frame.place(x=500, y=100, width=800, height=580)
 
+# MANAGE FRAME (WRITE ONLY FRAME)
 # Labels
 lbl_title = Label(Manage_Frame, text="Manage Students", bg="crimson", fg="white", font=("times new roman", 30, "bold"))
 lbl_title.grid(row=0, columnspan=2, pady=20)
@@ -121,6 +124,74 @@ btn_delete.place(x=250, y=450)
 
 btn_clear = Button(Manage_Frame, text="Clear", width=10, font=("times new roman", 14, "bold"), bg="blue", fg="white", command = btn_clear)
 btn_clear.place(x=350, y=450)
+
+
+# DETAIL FRAME (VIEW ONLY FRAME)
+# Labels
+lbl_title = Label(Detail_Frame, text="Student Details", bg="crimson", fg="white", font=("times new roman", 30, "bold"))
+lbl_title.grid(row=0, columnspan=2, pady=20)
+lbl_title.place(x=250, y=50)
+'''
+# Without Treeview
+# Table Frame
+Table_Frame = Frame(Detail_Frame, bd=4, relief=RIDGE, bg="white", highlightbackground="black", highlightthickness=2)
+Table_Frame.place(x=50, y=100, width=700, height=400)
+
+# Scrollbar
+scroll_x = Scrollbar(Table_Frame, orient=HORIZONTAL)
+scroll_y = Scrollbar(Table_Frame, orient=VERTICAL)
+
+# Student Table
+'''
+# Treeview
+'''What is Treeview? 
+Treeview is a widget which is used to display the data in a tree structure.
+'''
+
+student_table = (ttk.Treeview(root, columns=("roll", "name", "age", "gender", "address", "phone"), height=12, selectmode="extended",show='headings'))
+
+
+# define headings
+student_table.heading('name', text='Name')
+student_table.heading('roll', text='Roll')
+student_table.heading('age', text='Age')
+student_table.heading('gender', text='Gender')
+student_table.heading('address', text='Address')
+student_table.heading('phone', text='Phone')
+
+# # generate sample data
+contacts = []
+while len(contacts) < 100:
+    contacts.append((f'Name- {n}', f'Roll- {n}',f'Age-{n}',f'Gender-{n}',f'Address-{n}',f'Phone-{n}'))
+    n += 1
+
+# create a treeview insert function
+def treeview_insert():
+    for contact in contacts:
+        student_table.insert('', 'end', values=contact)
+
+# insert data into the treeview
+treeview_insert()
+
+# add data to the treeview
+'''for student in student_table:
+    student_table.insert('', Tk.after() , values=student)
+'''
+def item_selected(event):
+    for selected_item in student_table.selection():
+        item = student_table.item(selected_item)
+        record = item['values']
+        # show a message
+        showinfo(title='Information', message=','.join(record))
+
+
+student_table.bind('<<TreeviewSelect>>', item_selected)
+
+student_table.grid(row=0, column=0, sticky='new')
+
+# Scrollbar
+scroll_x = Scrollbar(Detail_Frame, orient=HORIZONTAL)
+scroll_y = Scrollbar(Detail_Frame, orient=VERTICAL)
 
 
 
