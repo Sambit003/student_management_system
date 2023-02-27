@@ -6,9 +6,9 @@ import sqlite3
 
 # Connecting to the database
 connectDB = sqlite3.connect('student.db')
-cusorDB = connectDB.cursor()
-cusorDB.execute('create table if not exists student_details (roll_no integer primary key, name text, age integer, gender text, address text, phone integer)')
-cusorDB.commit()
+crDB = connectDB.cursor()
+crDB.execute('create table if not exists student (roll_no integer primary key, name text, age integer, gender text, address text, phone integer)')
+connectDB.commit()
 
 # Creating instance of TK
 root = Tk()
@@ -20,7 +20,6 @@ age = IntVar()
 gender = StringVar()
 address = StringVar()
 phone = IntVar()
-
 
 # GUI Rendering code-block
 root.title("Student Management System")
@@ -36,13 +35,6 @@ Detail_Frame.place(x=500, y=100, width=800, height=580)
 # Labels
 lbl_title = Label(Manage_Frame, text="Manage Students", bg="crimson", fg="white", font=("times new roman", 30, "bold"))
 lbl_title.grid(row=0, columnspan=2, pady=20)
-
-
-
-
-
-
-
 
 
 root.mainloop()
