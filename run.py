@@ -77,18 +77,24 @@ txt_phone.place(x=200, y=350)
 
 # Button Functions
 def btn_add():
-    crDB.execute('insert into student values(?, ?, ?, ?, ?, ?)', (roll_no.get(), name.get(), age.get(), gender.get(), address.get(), phone.get()))
-    connectDB.commit()
-    messagebox.showinfo("Success", "Record has been inserted")
-    
-def btn_update():
-    crDB.execute(sql)
+    try:
+        crDB.execute('insert into student values(?, ?, ?, ?, ?, ?)', (roll_no.get(), name.get(), age.get(), gender.get(), address.get(), phone.get()))
+        connectDB.commit()
+        messagebox.showinfo("Success", "Record has been inserted")
+    except:
+        messagebox.showerror("Error", "Record not inserted")
 
+def btn_update():
+    # SQL query to update the record
+    crDB.execute()
 
 def btn_delete():
-    crDB.execute('delete from student where roll_no = ?', (roll_no.get(),))
-    connectDB.commit()
-    messagebox.showinfo("Success", "Record has been deleted")
+    try: 
+        crDB.execute('delete from student where roll_no = ?', (roll_no.get(),))
+        connectDB.commit()
+        messagebox.showinfo("Success", "Record has been deleted")
+    except:
+        messagebox.showerror("Error", "Record not found")
 
 def btn_clear():
     roll_no.set('')
