@@ -131,6 +131,71 @@ btn_clear.place(x=350, y=450)
 lbl_title = Label(Detail_Frame, text="Student Details", bg="crimson", fg="white", font=("times new roman", 30, "bold"))
 lbl_title.grid(row=0, columnspan=2, pady=20)
 lbl_title.place(x=250, y=50)
+
+lbl_roll = Label(Detail_Frame, text="Roll No.", bg="crimson", fg="black", font=("times new roman", 20, "bold"))
+lbl_roll.place(x=50, y=100)
+
+lbl_name = Label(Detail_Frame, text="Name", bg="crimson", fg="black", font=("times new roman", 20, "bold"))
+lbl_name.place(x=50, y=150)
+
+lbl_age = Label(Detail_Frame, text="Age", bg="crimson", fg="black", font=("times new roman", 20, "bold"))
+lbl_age.place(x=50, y=200)
+
+lb1_gender = Label(Detail_Frame, text="Gender", bg="crimson", fg="black", font=("times new roman", 20, "bold"))
+lb1_gender.place(x=50, y=250)
+
+lbl_address = Label(Detail_Frame, text="Address", bg="crimson", fg="black", font=("times new roman", 20, "bold"))
+lbl_address.place(x=50, y=300, height=50)
+
+lbl_phone = Label(Detail_Frame, text="Phone", bg="crimson", fg="black", font=("times new roman", 20, "bold"))
+lbl_phone.place(x=50, y=350)
+
+
+# columns=("roll", "name", "age", "gender", "address", "phone")
+# student_table = ttk.Treeview(root, columns=("roll", "name", "age", "gender", "address", "phone"))
+# dict_student=[]
+
+# for item in dict_student:
+#     dict_student.insert('', 'end', values=item)
+
+# def item_selected(event):
+#     for selected_item in dict_student.selection():
+#         piece = dict_student.item(selected_item)
+#         record = piece['values']
+#         # show a message
+#         showinfo(title='Information', message=','.join(record))
+
+
+# student_table.bind('<<TreeviewSelect>>', item_selected)
+
+# student_table.grid(row=0, column=0, sticky='new')
+
+Display_roll = Label(Detail_Frame, textvariable=roll_no, font=("times new roman", 15, "bold"), bd=5, relief=GROOVE)
+Display_roll.place(x=200, width=400, y=100)
+
+Display_name = Label(Detail_Frame, textvariable=name, font=("times new roman", 15, "bold"), bd=5, relief=GROOVE)
+Display_name.place(x=200, width=400, y=100)
+
+Display_age = Label(Detail_Frame, textvariable=age, font=("times new roman", 15, "bold"), bd=5, relief=GROOVE)
+Display_age.place(x=200, width=400, y=100)
+
+Display_gender = Label(Detail_Frame, textvariable=gender, font=("times new roman", 15, "bold"), bd=5, relief=GROOVE)
+Display_gender.place(x=200, width=400, y=100)   
+
+Display_address = Label(Detail_Frame, textvariable=address, font=("times new roman", 15, "bold"), bd=5, relief=GROOVE)
+Display_address.place(x=200, width=400, y=100)
+
+Display_phone = Label(Detail_Frame, textvariable=phone, font=("times new roman", 15, "bold"), bd=5, relief=GROOVE)
+Display_phone.place(x=200, width=400, y=100)
+
+
+
+
+# Scrollbar
+scroll_x = Scrollbar(Detail_Frame, orient=HORIZONTAL)
+scroll_y = Scrollbar(Detail_Frame, orient=VERTICAL)
+
+
 '''
 # Without Treeview
 # Table Frame
@@ -142,28 +207,28 @@ scroll_x = Scrollbar(Table_Frame, orient=HORIZONTAL)
 scroll_y = Scrollbar(Table_Frame, orient=VERTICAL)
 
 # Student Table
-'''
+
 # Treeview
-'''What is Treeview? 
+What is Treeview? 
 Treeview is a widget which is used to display the data in a tree structure.
-'''
+
 
 student_table = (ttk.Treeview(root, columns=("roll", "name", "age", "gender", "address", "phone"), height=12, selectmode="extended",show='headings'))
 
 
 # define headings
-student_table.heading('name', text='Name')
-student_table.heading('roll', text='Roll')
-student_table.heading('age', text='Age')
-student_table.heading('gender', text='Gender')
-student_table.heading('address', text='Address')
-student_table.heading('phone', text='Phone')
+# student_table.heading('name', text='Name')
+# student_table.heading('roll', text='Roll')
+# student_table.heading('age', text='Age')
+# student_table.heading('gender', text='Gender')
+# student_table.heading('address', text='Address')
+# student_table.heading('phone', text='Phone')
 
 # # generate sample data
-contacts = []
-while len(contacts) < 100:
-    contacts.append((f'Name- {n}', f'Roll- {n}',f'Age-{n}',f'Gender-{n}',f'Address-{n}',f'Phone-{n}'))
-    n += 1
+# contacts = []
+# while len(contacts) < 100:
+#     contacts.append((f'Name- {n}', f'Roll- {n}',f'Age-{n}',f'Gender-{n}',f'Address-{n}',f'Phone-{n}'))
+#     n += 1
 
 # create a treeview insert function
 def treeview_insert():
@@ -174,9 +239,9 @@ def treeview_insert():
 treeview_insert()
 
 # add data to the treeview
-'''for student in student_table:
+for student in student_table:
     student_table.insert('', Tk.after() , values=student)
-'''
+
 def item_selected(event):
     for selected_item in student_table.selection():
         item = student_table.item(selected_item)
@@ -192,7 +257,7 @@ student_table.grid(row=0, column=0, sticky='new')
 # Scrollbar
 scroll_x = Scrollbar(Detail_Frame, orient=HORIZONTAL)
 scroll_y = Scrollbar(Detail_Frame, orient=VERTICAL)
-
+'''
 
 
 root.mainloop()
