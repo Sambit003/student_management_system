@@ -22,6 +22,7 @@ gender = StringVar(root)
 address = StringVar(root)
 phone = StringVar(root)
 
+
 # GUI Rendering code-block
 root.title("Student Management System")
 root.geometry("1350x700+0+0")
@@ -29,16 +30,17 @@ root.geometry("1350x700+0+0")
 
 # Frames
 Manage_Frame = Frame(root, bd=4, relief=RIDGE, bg="crimson")
-Manage_Frame.place(x=20, y=50, width=450, height=580)
+Manage_Frame.place(x=20, y=30, width=450, height=580)
 
 Detail_Frame = Frame(root, bd=4, relief=RIDGE, bg="crimson")
-Detail_Frame.place(x=480, y=50, width=800, height=580)
+Detail_Frame.place(x=500, y=30, width=750, height=580)
+
 
 # MANAGE FRAME (WRITE ONLY FRAME)
 # Labels
 lbl_title = Label(Manage_Frame, text="Manage Students", bg="crimson", fg="white", font=("times new roman", 30, "bold"))
 lbl_title.grid(row=0, columnspan=2, pady=20)
-lbl_title.place(x=50, y=50)
+lbl_title.place(x=50, y=30)
 
 lbl_roll = Label(Manage_Frame, text="Roll No.", bg="crimson", fg="black", font=("times new roman", 20, "bold"))
 lbl_roll.place(x=50, y=100)
@@ -61,22 +63,23 @@ lbl_phone.place(x=50, y=350)
 
 # Entry
 txt_roll = Entry(Manage_Frame, textvariable=roll_no, font=("times new roman", 15, "bold"), bd=5, relief=GROOVE)
-txt_roll.place(x=200, y=100)
+txt_roll.place(x=180, y=100)
 
 txt_name = Entry(Manage_Frame, textvariable=name, font=("times new roman", 15, "bold"), bd=5, relief=GROOVE)
-txt_name.place(x=200, y=150)
+txt_name.place(x=180, y=150)
 
 txt_age = Entry(Manage_Frame, textvariable=age, font=("times new roman", 15, "bold"), bd=5, relief=GROOVE)
-txt_age.place(x=200, y=200)
+txt_age.place(x=180, y=200)
 
 txt_gender = Entry(Manage_Frame, textvariable=gender, font=("times new roman", 15, "bold"), bd=5, relief=GROOVE)
-txt_gender.place(x=200, y=250)
+txt_gender.place(x=180, y=250)
 
 txt_address = Entry(Manage_Frame, textvariable=address, font=("times new roman", 15, "bold"), bd=5, relief=GROOVE)
-txt_address.place(x=200, y=300, height=50)
+txt_address.place(x=180, y=300)
 
 txt_phone = Entry(Manage_Frame, textvariable=phone, font=("times new roman", 15, "bold"), bd=5, relief=GROOVE)
-txt_phone.place(x=200, y=4)
+txt_phone.place(x=180, y=350)
+
 
 # Button Functions
 def btn_add():
@@ -119,22 +122,23 @@ def display_records():
    for records in data:
        tree.insert('', END, values=records)
 
+
 # Buttons
 btn_add = Button(Manage_Frame, text="Add", width=10, font=("times new roman", 14, "bold"), bg="blue", fg="white", command = btn_add)
-btn_add.place(x=50, y=450)
+btn_add.place(x=80, y=430)
 
 btn_update = Button(Manage_Frame, text="Update", width=10, font=("times new roman", 14, "bold"), bg="blue", fg="white", command = btn_update)
-btn_update.place(x=150, y=450)
+btn_update.place(x=230, y=430)
 
 btn_delete = Button(Manage_Frame, text="Delete", width=10, font=("times new roman", 14, "bold"), bg="blue", fg="white", command = btn_delete)
-btn_delete.place(x=250, y=450)
+btn_delete.place(x=80, y=480)
 
 btn_clear = Button(Manage_Frame, text="Clear", width=10, font=("times new roman", 14, "bold"), bg="blue", fg="white", command = btn_clear)
-btn_clear.place(x=350, y=450)
+btn_clear.place(x=230, y=480)
 
 
 # DETAIL FRAME (VIEW ONLY FRAME)
-Label(Detail_Frame, text='Students Records', font=("times new roman", 20, "bold"), bg='red', fg='LightCyan').pack(side=TOP, fill=X)
+Label(Detail_Frame, text='Students Records', font=("times new roman", 24, "bold"), bg='red', fg='LightCyan').pack(side=TOP, fill=X)
 tree = ttk.Treeview(Detail_Frame, height=100, selectmode=BROWSE,
                    columns=("Roll", "Name", "Age", "Gender", "Address", "Phone"))
 X_scroller = Scrollbar(tree, orient=HORIZONTAL, command=tree.xview)
@@ -148,14 +152,14 @@ tree.heading('Age', text='Age', anchor=CENTER)
 tree.heading('Gender', text='Gender', anchor=CENTER)
 tree.heading('Address', text='Address', anchor=CENTER)
 tree.heading('Phone', text='Phone', anchor=CENTER)
-tree.column('#0', width=100, stretch=NO)
-tree.column('#1', width=100, stretch=NO)
-tree.column('#2', width=100, stretch=NO)
-tree.column('#3', width=100, stretch=NO)
-tree.column('#4', width=100, stretch=NO)
-tree.column('#5', width=100, stretch=NO)
+tree.column('#0', width=90, stretch=NO)
+tree.column('#1', width=90, stretch=NO)
+tree.column('#2', width=90, stretch=NO)
+tree.column('#3', width=90, stretch=NO)
+tree.column('#4', width=90, stretch=NO)
+tree.column('#5', width=90, stretch=NO)
 
-tree.place(y=30, relwidth=1, relheight=0.9, relx=0)
+tree.place(y=50, relwidth=1, relheight=0.9, relx=0)
 display_records()
 
 root.update()
